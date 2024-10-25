@@ -36,7 +36,14 @@
 
 6. Application Management
 
-    1. Search for common "hacking-tools" and unwanted software using  
+    1. Search for common "hacking-tools" and unwanted software using  `sudo dpkg --get –selections` or `sudo rpm -qa` depending on os. You can also pipe this output into grep to search specific programs (e.g ` sudo dpkg --get –selections | grep APPNAME`). Be sure to look for TelNet, FTP, VNC, NFS, Apache, Samba, etc unless otherwise specified by the readme.
+  
+    2. Uninstall these packages with `sudo apt-get purge APPNAME`
+  
+    3. Change startup programs with `sudo systemctl disable SERVICENAME` and `sudo systemctl enable SERVICENAME`
+  
+    4. Look for programs that automatically start using `sudo nano /etc/init.d/rc.local` and `sudo crontab -e`. Run `sudo apt-get install chkconfig` followed by `sudo chkconfig --list | grep ‘3:on’`  
+ 
 
 
 <br><br><br><br><br>
